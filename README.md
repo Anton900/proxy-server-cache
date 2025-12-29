@@ -15,14 +15,16 @@ This project idea and instructions are from https://roadmap.sh/projects/caching-
 
 ### Quarkus dev mode (live reload)
   - mvn quarkus:dev -Dquarkus.http.port=3000 -Dorigin.url=http://dummyjson.com/products
-  - 
+
 ### Packaged application (example)
   - mvn package
   - java -jar target/*-runner.jar --port 3000 --origin http://dummyjson.com/products
 
 ### Clear cache
-  - java -jar target/*-runner.jar --clear-cache
-  - or run with args: --port 3000 --origin clear-cache (the app recognizes --clear-cache)
+  - To clear the cache on startup, make sure there's an existing Quarkus application running on that port already. 
+  - Then start a new application with the --clear-cache argument:
+  - java -jar target/*-runner.jar --port 3000 --clear-cache
+  - or run with args: ./mvnw quarkus:dev -Dquarkus.args="--port 3000 --clear-cache"
 
 ### After app start
 - Open browser or use curl to http://localhost:3000/.
