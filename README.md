@@ -1,6 +1,7 @@
 # proxy-server-cache
 
 A proxy server that forwards requests to a configured origin URL (set via the origin.url config property or the --origin command-line parameter). Requests may include a "limit" query parameter (defaults to 10) which will be forwarded to the origin.
+
 The application caches proxied responses in-memory using Caffeine; cached entries expire after 15 minutes.
 
 This project idea and instructions are from https://roadmap.sh/projects/caching-server.
@@ -13,7 +14,7 @@ This project idea and instructions are from https://roadmap.sh/projects/caching-
 
 ## How to start
 
-### Quarkus dev mode (live reload)
+### Quarkus dev mode
   - mvn quarkus:dev -Dquarkus.http.port=3000 -Dorigin.url=http://dummyjson.com/products
 
 ### Packaged application (example)
