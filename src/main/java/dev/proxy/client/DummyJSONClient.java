@@ -11,13 +11,11 @@ import java.net.http.HttpResponse;
 public class DummyJSONClient {
     private final HttpClient httpClient = HttpClient.newHttpClient();
 
-    public String getFromOriginUrl(String originUrl) throws Exception {
-        System.out.println("In Client");
+    public HttpResponse<String> getFromOriginUrl(String originUrl) throws Exception {
         HttpRequest request = HttpRequest.newBuilder()
                 .uri(URI.create(originUrl))
                 .GET()
                 .build();
-        System.out.println("Build request to " + originUrl);
-        return httpClient.send(request, HttpResponse.BodyHandlers.ofString()).body();
+        return httpClient.send(request, HttpResponse.BodyHandlers.ofString());
     }
 }
