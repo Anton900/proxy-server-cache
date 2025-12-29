@@ -5,25 +5,28 @@ The application caches proxied responses in-memory using Caffeine; cached entrie
 
 This project idea and instructions are from https://roadmap.sh/projects/caching-server.
 
-Tech stack
+## Tech stack
 - Java 21
 - Quarkus
 - Caffeine (in-memory cache)
 - Maven
 
-How to start
+## How to start
 
-- Quarkus dev mode (live reload)
-  - mvn quarkus:dev -Dquarkus.http.port=3000 -Dorigin.url=http://dummyjson.com
-
-- Packaged application (example)
+### Quarkus dev mode (live reload)
+  - mvn quarkus:dev -Dquarkus.http.port=3000 -Dorigin.url=http://dummyjson.com/products
+  - 
+### Packaged application (example)
   - mvn package
-  - java -jar target/*-runner.jar --port 3000 --origin http://dummyjson.com
+  - java -jar target/*-runner.jar --port 3000 --origin http://dummyjson.com/products
 
-- Clear cache (special run mode)
+### Clear cache
   - java -jar target/*-runner.jar --clear-cache
   - or run with args: --port 3000 --origin clear-cache (the app recognizes --clear-cache)
 
-Examples
-- GET /products?limit=5  -> proxied to {origin}/products?limit=5 (limit defaults to 10 if omitted)
-- GET /users           -> proxied to {origin}/users?limit=10
+### After app start
+- Open browser or use curl to http://localhost:3000/.
+
+#### Examples
+- http://localhost:3000/?limit=5 (in browser)
+- curl http://localhost:3000/products?limit=15
