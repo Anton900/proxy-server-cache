@@ -15,7 +15,8 @@ This project idea and instructions are from https://roadmap.sh/projects/caching-
 ## How to start
 
 ### Quarkus dev mode
-  - mvn quarkus:dev -Dquarkus.http.port=3000 -Dorigin.url=http://dummyjson.com/products
+  - ./mvnw quarkus:dev -Dquarkus.args="--port <number> --origin <URL>"
+  - ./mvnw quarkus:dev -Dquarkus.args="--port 3000 --origin https://dummyjson.com/products"
 
 ### Packaged application (example)
   - mvn package
