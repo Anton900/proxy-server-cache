@@ -12,6 +12,7 @@ public class DummyJSONClient {
     private final HttpClient httpClient = HttpClient.newHttpClient();
 
     public HttpResponse<String> getFromOriginUrl(String originUrl) throws Exception {
+        System.out.println("IN DummyJSONClient.getFromOriginUrl: " + originUrl);
         HttpRequest request = HttpRequest.newBuilder()
                 .uri(URI.create(originUrl))
                 .GET()

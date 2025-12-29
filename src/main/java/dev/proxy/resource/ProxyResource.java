@@ -23,6 +23,7 @@ public class ProxyResource {
     @GET
     public Response getFromOrigin(@QueryParam("limit") @DefaultValue("10") int limit) throws Exception
     {
+        System.out.println("IN ProxyResource.getFromOrigin");
         System.out.println("Origin URL: " + originUrl.orElse("not set") + " | limit: " + limit);
         if(originUrl.isEmpty())
         {
@@ -31,5 +32,13 @@ public class ProxyResource {
                     .build();
         }
         return proxyService.getFromOriginUrl(originUrl.get(), limit);
+    }
+
+    @Path("clear-cache")
+    @GET
+    public Response clearCache() {
+        System.out.println("IN ProxyResource.clearCache");
+        proxyService.clearCache();
+        return Response.ok("Cache cleared").build();
     }
 }
